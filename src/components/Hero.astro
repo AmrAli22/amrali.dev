@@ -1,0 +1,91 @@
+---
+---
+
+<section data-hero class="relative min-h-[100svh] flex items-center pt-24 pb-20 md:pt-28 md:pb-28">
+  <div class="mx-auto max-w-content w-full px-5 md:px-8">
+    <p
+      class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-8 md:mb-10"
+      data-hero-fade
+    >
+      Amr Abd-Elhady Ali <span class="mx-2 text-line">/</span> Senior iOS Engineer
+    </p>
+
+    <h1
+      class="font-display text-[clamp(2.25rem,7.5vw,5.5rem)] leading-[1.04] tracking-tighter2 text-ink max-w-5xl"
+    >
+      <span class="block overflow-hidden">
+        <span class="block" data-hero-line>7+ years shipping</span>
+      </span>
+      <span class="block overflow-hidden">
+        <span class="block" data-hero-line>production iOS apps</span>
+      </span>
+      <span class="block overflow-hidden">
+        <span class="block" data-hero-line>across the Gulf and Europe.</span>
+      </span>
+    </h1>
+
+    <p
+      class="mt-7 md:mt-9 max-w-2xl text-[17px] md:text-[19px] text-muted leading-relaxed"
+      data-hero-fade
+    >
+      Currently architecting the UIKit-to-SwiftUI migration of a Saudi real
+      estate platform.
+    </p>
+
+    <div
+      class="mt-7 inline-flex items-center gap-2.5 text-[13px] text-subtle"
+      data-hero-fade
+    >
+      <span class="relative inline-flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400/70"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+      </span>
+      <span>
+        Cairo, Egypt &mdash; working with teams across Saudi Arabia, UAE, and Europe
+      </span>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row gap-3" data-hero-fade>
+      <a
+        href="#projects"
+        class="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-ink text-paper text-[14px] font-medium hover:bg-accent transition-colors duration-200"
+      >
+        View Work
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="transition-transform duration-200 group-hover:translate-x-0.5"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a
+        href="#contact"
+        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-line text-ink text-[14px] font-medium hover:border-ink transition-colors duration-200"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.2em] uppercase text-subtle hidden md:flex flex-col items-center gap-2"
+    aria-hidden="true"
+    data-hero-fade
+  >
+    <span>Scroll</span>
+    <span class="block w-px h-8 bg-line"></span>
+  </div>
+</section>
+
+<script>
+  import { initHeroAnim } from '../scripts/hero-anim';
+  initHeroAnim();
+</script>

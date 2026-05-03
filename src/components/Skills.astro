@@ -1,0 +1,52 @@
+---
+import { Icon } from 'astro-icon/components';
+import { skills } from '../data/skills';
+---
+
+<section
+  id="skills"
+  aria-labelledby="skills-heading"
+  class="border-t border-line"
+>
+  <div class="mx-auto max-w-content px-5 md:px-8 py-20 md:py-32">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-12 md:mb-16">
+      <div class="md:col-span-3">
+        <h2
+          id="skills-heading"
+          class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium"
+        >
+          Skills
+        </h2>
+      </div>
+      <div class="md:col-span-9">
+        <p class="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.35] tracking-tightish text-ink max-w-3xl font-medium">
+          The toolkit I've built across seven years and six teams.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {skills.map((group) => (
+        <div class="p-5 md:p-6 rounded-xl border border-line hover:border-ink/30 transition-colors duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon
+              name={group.icon}
+              class="w-[18px] h-[18px] text-accent"
+              aria-hidden="true"
+            />
+            <h3 class="font-display text-[15px] font-semibold text-ink tracking-tightish">
+              {group.title}
+            </h3>
+          </div>
+          <ul class="flex flex-wrap gap-1.5">
+            {group.items.map((item) => (
+              <li class="inline-flex items-center px-2.5 py-1 rounded-md bg-paper border border-line text-[12px] text-muted font-medium">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

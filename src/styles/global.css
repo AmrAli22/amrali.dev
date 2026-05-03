@@ -1,0 +1,65 @@
+@import '@fontsource-variable/geist';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: auto;
+  background: theme('colors.paper');
+}
+
+body {
+  background: theme('colors.paper');
+  color: theme('colors.ink');
+  font-family: theme('fontFamily.body');
+  font-feature-settings: 'cv11', 'ss01';
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: theme('fontFamily.display');
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: theme('colors.ink');
+}
+
+::selection {
+  background: theme('colors.accent');
+  color: theme('colors.paper');
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.accent');
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a { color: inherit; }
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* Hero reveal — ensures content stays visible if JS fails */
+.hero-line { display: inline-block; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

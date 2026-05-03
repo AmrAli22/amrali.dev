@@ -1,0 +1,121 @@
+---
+const email = 'theamr.ali@gmail.com';
+// TODO: Amr to provide LinkedIn + GitHub URLs
+const linkedinUrl = '#';
+const githubUrl = '#';
+---
+
+<section
+  id="contact"
+  aria-labelledby="contact-heading"
+  class="border-t border-line"
+>
+  <div class="mx-auto max-w-content px-5 md:px-8 py-24 md:py-36">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+      <div class="md:col-span-3">
+        <h2
+          id="contact-heading"
+          class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium"
+        >
+          Get in Touch
+        </h2>
+      </div>
+
+      <div class="md:col-span-9">
+        <p class="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.35] tracking-tightish text-ink max-w-3xl font-medium">
+          Open to Senior iOS Engineer roles in Saudi Arabia, UAE, and remote
+          across the Gulf.
+        </p>
+
+        <div class="mt-10">
+          <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-3">
+            Email
+          </p>
+          <button
+            type="button"
+            data-copy={email}
+            class="group inline-flex items-baseline gap-3 text-left font-display text-[clamp(1.6rem,5vw,3rem)] tracking-tighter2 text-ink hover:text-accent transition-colors duration-200"
+            aria-label={`Copy email ${email} to clipboard`}
+          >
+            <span>{email}</span>
+            <span
+              data-copy-state
+              class="text-[12px] tracking-[0.22em] uppercase text-subtle font-medium font-body opacity-0 transition-opacity duration-200"
+              aria-hidden="true"
+            >Copy</span>
+          </button>
+          <p class="mt-2 text-[13px] text-subtle">
+            Click to copy &middot;
+            <a
+              href={`mailto:${email}`}
+              class="underline-offset-4 hover:underline"
+            >or open mail app</a>
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-6 max-w-2xl">
+          <div>
+            <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-2">
+              LinkedIn
+            </p>
+            <a
+              href={linkedinUrl}
+              class="text-[15px] text-ink hover:text-accent transition-colors"
+              target="_blank"
+              rel="noreferrer noopener"
+            >linkedin.com/in/&hellip;</a>
+          </div>
+          <div>
+            <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-2">
+              GitHub
+            </p>
+            <a
+              href={githubUrl}
+              class="text-[15px] text-ink hover:text-accent transition-colors"
+              target="_blank"
+              rel="noreferrer noopener"
+            >github.com/&hellip;</a>
+          </div>
+          <div>
+            <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-2">
+              Location
+            </p>
+            <p class="text-[15px] text-ink">Cairo, Egypt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const state = document.querySelector<HTMLElement>('[data-copy-state]');
+  if (button && state) {
+    button.addEventListener('click', async () => {
+      const email = button.dataset.copy;
+      if (!email) return;
+      try {
+        await navigator.clipboard.writeText(email);
+        state.textContent = 'Copied';
+        state.style.opacity = '1';
+        state.style.color = '#1E3A8A';
+        setTimeout(() => {
+          state.style.opacity = '0';
+          setTimeout(() => {
+            state.textContent = 'Copy';
+            state.style.color = '';
+          }, 200);
+        }, 1500);
+      } catch {
+        window.location.href = `mailto:${email}`;
+      }
+    });
+    button.addEventListener('mouseenter', () => {
+      if (state.textContent === 'Copy') state.style.opacity = '1';
+    });
+    button.addEventListener('mouseleave', () => {
+      if (state.textContent === 'Copy') state.style.opacity = '0';
+    });
+  }
+</script>

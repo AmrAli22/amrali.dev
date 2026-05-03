@@ -1,0 +1,31 @@
+---
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-paper/70 border-b border-line/60">
+  <nav class="mx-auto max-w-content px-5 md:px-8 h-14 flex items-center justify-between" aria-label="Primary">
+    <a href="#top" class="font-display text-[15px] font-semibold tracking-tightish text-ink">
+      Amr Abd-Elhady Ali
+    </a>
+    <ul class="hidden md:flex items-center gap-7 text-[13px] text-muted">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class="hover:text-ink transition-colors duration-200"
+          >{l.label}</a>
+        </li>
+      ))}
+    </ul>
+    <a
+      href="#contact"
+      class="md:hidden text-[13px] font-medium text-accent"
+    >Contact</a>
+  </nav>
+</header>

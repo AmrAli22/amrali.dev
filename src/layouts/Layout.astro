@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Amr Abd-Elhady Ali — Senior iOS Engineer',
+  description = '7+ years shipping production iOS apps across the Gulf and Europe. Currently architecting the UIKit-to-SwiftUI migration of a Saudi real estate platform.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#FAFAF9" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body id="top">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-ink focus:text-paper focus:px-3 focus:py-2 focus:rounded"
+    >Skip to content</a>
+
+    <Nav />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="border-t border-line mt-24">
+      <div class="mx-auto max-w-content px-5 md:px-8 py-10 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-[13px] text-subtle">
+        <p>&copy; {new Date().getFullYear()} Amr Abd-Elhady Ali</p>
+        <p>Cairo, Egypt</p>
+      </div>
+    </footer>
+
+    <script>
+      import { initLenis } from '../scripts/lenis';
+      initLenis();
+    </script>
+  </body>
+</html>

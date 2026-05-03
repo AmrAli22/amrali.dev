@@ -1,0 +1,98 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section
+  id="projects"
+  aria-labelledby="projects-heading"
+  class="border-t border-line"
+>
+  <div class="mx-auto max-w-content px-5 md:px-8 py-20 md:py-32">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-12 md:mb-16">
+      <div class="md:col-span-3">
+        <h2
+          id="projects-heading"
+          class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium"
+        >
+          Selected Work
+        </h2>
+      </div>
+      <div class="md:col-span-9">
+        <p class="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.35] tracking-tightish text-ink max-w-3xl font-medium">
+          Four production apps, four very different audiences &mdash; all
+          shipped, all live.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-10 md:space-y-14">
+      {projects.map((p) => (
+        <article class="group grid md:grid-cols-12 gap-6 md:gap-10 p-6 md:p-10 border border-line rounded-xl hover:border-ink/30 transition-colors duration-300 bg-paper">
+          <div class="md:col-span-7 flex flex-col">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[12px] tracking-wide uppercase text-subtle font-medium">
+              <span>{p.year}</span>
+              <span class="text-line">·</span>
+              <span>{p.role}</span>
+            </div>
+
+            <h3 class="mt-3 font-display text-[26px] md:text-[32px] tracking-tightish text-ink font-semibold leading-tight">
+              {p.name}
+              <span class="text-muted font-normal"> &mdash; {p.subtitle}</span>
+            </h3>
+
+            <p class="mt-4 text-[16px] md:text-[17px] text-muted leading-relaxed max-w-prose">
+              {p.tagline}
+            </p>
+
+            <ul class="mt-6 space-y-3 max-w-prose">
+              {p.impact.map((point) => (
+                <li class="flex gap-3 text-[14px] md:text-[15px] text-muted leading-relaxed">
+                  <span class="mt-2 shrink-0 w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-7 flex flex-wrap gap-1.5">
+              {p.tech.map((t) => (
+                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-paper border border-line text-[12px] text-muted font-medium">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {p.appStoreUrl && (
+              <a
+                href={p.appStoreUrl}
+                class="mt-6 inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                View on App Store
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </a>
+            )}
+          </div>
+
+          <div class="md:col-span-5">
+            <div
+              class="aspect-[4/5] md:aspect-auto md:h-full min-h-[280px] rounded-lg border border-line bg-gradient-to-br from-paper to-line/30 flex items-center justify-center p-6 text-center"
+              aria-label={`${p.name} screenshot placeholder`}
+            >
+              <div>
+                <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-3">
+                  Screenshot Coming
+                </p>
+                <p class="font-display text-[18px] text-ink/60">
+                  /public/projects/{p.slug}/
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
