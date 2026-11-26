@@ -1,0 +1,82 @@
+---
+import { degrees, certifications } from '../data/education';
+---
+
+<section
+  id="education"
+  aria-labelledby="education-heading"
+  class="border-t border-line"
+>
+  <div class="mx-auto max-w-content px-5 md:px-8 py-20 md:py-32">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-12 md:mb-16">
+      <div class="md:col-span-3">
+        <h2
+          id="education-heading"
+          class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium"
+        >
+          06 / Education & Learning
+        </h2>
+      </div>
+      <div class="md:col-span-9">
+        <p class="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.35] tracking-tightish text-ink max-w-3xl font-medium">
+          Strong foundations. Continuous learning.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+      <div class="md:col-span-3"></div>
+      <div class="md:col-span-9 space-y-12 md:space-y-14">
+        <div class="space-y-8">
+          {degrees.map((d) => (
+            <div>
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[12px] tracking-wide uppercase text-subtle font-medium">
+                <span>{d.year}</span>
+                <span class="text-line">&middot;</span>
+                <span>{d.kind}</span>
+              </div>
+              <h3 class="mt-2 font-display text-[20px] md:text-[22px] tracking-tightish text-ink font-semibold">
+                {d.title}
+              </h3>
+              <p class="mt-0.5 text-[14px] md:text-[15px] text-muted">
+                {d.institution} &middot; {d.location}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-semibold mb-5 md:mb-6">
+            Certifications & Additional Learning
+          </p>
+          <ul class="divide-y divide-line border-y border-line">
+            {certifications.map((c) => (
+              <li class="py-4 md:py-5 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                {c.url ? (
+                  <a
+                    href={c.url}
+                    class="font-display text-[15px] md:text-[16px] text-ink font-semibold tracking-tightish hover:text-accent transition-colors"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {c.name}
+                  </a>
+                ) : (
+                  <span class="font-display text-[15px] md:text-[16px] text-ink font-semibold tracking-tightish">
+                    {c.name}
+                  </span>
+                )}
+                <span class="text-[13px] md:text-[14px] text-muted">
+                  {c.issuer}
+                </span>
+                <span class="ml-auto text-[12px] tracking-wide uppercase text-subtle font-medium">
+                  {c.year}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
