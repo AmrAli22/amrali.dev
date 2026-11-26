@@ -27,13 +27,13 @@ export const experience: ExperienceEntry[] = [
       'Hardened encryption protocols and modernized legacy Objective-C codebases for banking apps across Bosnia, Croatia, and Romania. Lifted runtime performance by 35% and improved security compliance by 40% while owning regional App Store submissions.',
   },
   {
-    company: 'Uram-IT',
+    company: 'Alqemam qTech',
     role: 'iOS Developer',
     start: 'Dec 2021',
     end: 'Apr 2022',
     location: 'Remote',
     summary:
-      'Built Maqraa Unizah — a Quran-memorization platform connecting teachers and students across the Arab world via live audio/video circles. Adopted VIPER from scratch (-20% feature dev time) and engineered an offline-first CoreData layer for low-connectivity regions.',
+      'Shipped Aljoud, an integrated university learning marketplace with structured courses, in-app purchases, and PDFKit-rendered study materials across multiple universities and majors.',
   },
   {
     company: 'Medica Healthy',

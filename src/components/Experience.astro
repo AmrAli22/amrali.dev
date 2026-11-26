@@ -1,5 +1,11 @@
 ---
 import { experience } from '../data/experience';
+
+const stats = [
+  { value: '7+', label: 'Years' },
+  { value: '6', label: 'Companies' },
+  { value: '4', label: 'Sectors' },
+];
 ---
 
 <section
@@ -8,15 +14,37 @@ import { experience } from '../data/experience';
   class="border-t border-line"
 >
   <div class="mx-auto max-w-content px-5 md:px-8 py-20 md:py-32">
-    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-12 md:mb-16">
       <div class="md:col-span-3">
         <h2
           id="experience-heading"
           class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium"
         >
-          Experience
+          04 / Experience
         </h2>
       </div>
+      <div class="md:col-span-9">
+        <p class="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.35] tracking-tightish text-ink max-w-3xl font-medium">
+          A career built across six teams and four sectors.
+        </p>
+
+        <dl class="mt-8 md:mt-10 flex flex-wrap gap-x-10 gap-y-6">
+          {stats.map((s) => (
+            <div class="flex flex-col">
+              <dt class="font-display text-[clamp(1.8rem,4vw,2.4rem)] leading-none tracking-tighter2 text-accent font-semibold">
+                {s.value}
+              </dt>
+              <dd class="mt-1.5 text-[11px] tracking-[0.22em] uppercase text-subtle font-semibold">
+                {s.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+      <div class="md:col-span-3"></div>
 
       <ol class="md:col-span-9 relative">
         {experience.map((entry, i) => (
