@@ -90,19 +90,33 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'maqraa',
-    name: 'Maqraa',
-    subtitle: 'Quran Memorization Platform',
+    slug: 'aljoud',
+    name: 'Aljoud',
+    subtitle: 'University Learning Marketplace',
     role: 'iOS Developer',
     year: '2021 — 2022',
     tagline:
-      'A learning app connecting Quran teachers and students across the Arab world via live audio and video circles.',
+      'An integrated learning platform connecting university students with structured courses, rich study materials, interactive quizzes, and flexible purchasing journeys across multiple universities and majors.',
     impact: [
-      'Implemented VIPER architecture from scratch, cutting feature development time by 20%.',
-      'Integrated real-time audio/video calling and live notifications for group learning sessions.',
-      'Built an offline-first data layer with CoreData for low-connectivity regions.',
+      'Built the full catalogue experience — universities, majors, and courses — with performant list and detail screens.',
+      'Shipped in-app purchases for course access and educational offers, with multiple purchasing journeys.',
+      'Rendered PDF study materials inline with PDFKit for a seamless in-app reading experience.',
     ],
-    tech: ['Swift', 'SwiftUI', 'VIPER', 'Combine', 'SnapKit', 'CoreData', 'WebRTC', 'Arabic / RTL'],
+    tech: ['Swift', 'UIKit', 'MVVM', 'REST APIs', 'PDFKit', 'In-App Purchases', 'Arabic / RTL'],
+    apps: [
+      {
+        name: 'Aljoud',
+        tagline: 'Learning marketplace for university students — curricula, quizzes, and PDF study materials.',
+        url: 'https://apps.apple.com/sa/app/aljoud/id1604452873',
+        cta: 'View on App Store',
+        screenshot: '/projects/aljoud/aljoud-1.png',
+      },
+    ],
+    screenshots: [
+      '/projects/aljoud/aljoud-1.png',
+      '/projects/aljoud/aljoud-2.png',
+      '/projects/aljoud/aljoud-3.png',
+    ],
   },
   {
     slug: 'medica',
