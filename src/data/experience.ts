@@ -9,13 +9,13 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
-    company: 'Bussma Real Estate',
+    company: 'SADAN PropTech',
     role: 'Senior iOS Engineer',
     start: 'Jul 2023',
     end: 'Present',
     location: 'Saudi Arabia · Remote',
     summary:
-      'Leading the incremental UIKit-to-SwiftUI migration of a production real estate platform. Architected the auctions and auth modules, integrated SignalR for real-time bidding, and instituted code review and testing standards that cut post-release bugs by 30%.',
+      'Leading iOS across three production apps — Zayid (auctions), Damin (property docs), and RealTech (commercial leasing). Architected the incremental UIKit-to-SwiftUI migration, integrated SignalR for real-time bidding, and instituted code review and testing standards that cut post-release bugs by 30%.',
   },
   {
     company: 'Asseco South Eastern Europe',

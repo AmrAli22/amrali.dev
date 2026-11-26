@@ -19,103 +19,182 @@ import { projects } from '../data/projects';
       </div>
       <div class="md:col-span-9">
         <p class="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.35] tracking-tightish text-ink max-w-3xl font-medium">
-          Four production apps, four very different audiences &mdash; all
-          shipped, all live.
+          Four production engagements, from a three-app Saudi PropTech group to European banking &mdash; all shipped.
         </p>
       </div>
     </div>
 
     <div class="space-y-10 md:space-y-14">
-      {projects.map((p) => (
-        <article class="group grid md:grid-cols-12 gap-6 md:gap-10 p-6 md:p-10 border border-line rounded-xl hover:border-ink/30 transition-colors duration-300 bg-paper">
-          <div class="md:col-span-7 flex flex-col">
-            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[12px] tracking-wide uppercase text-subtle font-medium">
-              <span>{p.year}</span>
-              <span class="text-line">·</span>
-              <span>{p.role}</span>
-            </div>
+      {projects.map((p) => {
+        const isMultiApp = p.apps && p.apps.length >= 2;
+        return (
+          <article class="group p-6 md:p-10 border border-line rounded-xl hover:border-ink/30 transition-colors duration-300 bg-paper">
+            {isMultiApp ? (
+              <div>
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[12px] tracking-wide uppercase text-subtle font-medium">
+                  <span>{p.year}</span>
+                  <span class="text-line">&middot;</span>
+                  <span>{p.role}</span>
+                </div>
 
-            <h3 class="mt-3 font-display text-[26px] md:text-[32px] tracking-tightish text-ink font-semibold leading-tight">
-              {p.name}
-              <span class="text-muted font-normal"> &mdash; {p.subtitle}</span>
-            </h3>
+                <h3 class="mt-3 font-display text-[26px] md:text-[32px] tracking-tightish text-ink font-semibold leading-tight">
+                  {p.name}
+                  <span class="text-muted font-normal"> &mdash; {p.subtitle}</span>
+                </h3>
 
-            <p class="mt-4 text-[16px] md:text-[17px] text-muted leading-relaxed max-w-prose">
-              {p.tagline}
-            </p>
+                <p class="mt-4 text-[16px] md:text-[17px] text-muted leading-relaxed max-w-prose">
+                  {p.tagline}
+                </p>
 
-            <ul class="mt-6 space-y-3 max-w-prose">
-              {p.impact.map((point) => (
-                <li class="flex gap-3 text-[14px] md:text-[15px] text-muted leading-relaxed">
-                  <span class="mt-2 shrink-0 w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div class="mt-7 flex flex-wrap gap-1.5">
-              {p.tech.map((t) => (
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-paper border border-line text-[12px] text-muted font-medium">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {p.apps && p.apps.length > 0 && (
-              <ul class="mt-6 flex flex-col gap-2">
-                {p.apps.map((app) => (
-                  <li class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <a
-                      href={app.url}
-                      class="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      View on App Store
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M7 17L17 7M9 7h8v8" />
-                      </svg>
-                    </a>
-                    <span class="text-[12px] text-subtle">{app.label}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          <div class="md:col-span-5">
-            {p.screenshots && p.screenshots.length > 0 ? (
-              <div class="h-full flex items-center justify-center">
-                <div class="grid grid-cols-3 gap-2.5 md:gap-3 w-full">
-                  {p.screenshots.slice(0, 3).map((src, i) => (
-                    <img
-                      src={src}
-                      alt={`${p.name} screenshot ${i + 1}`}
-                      loading="lazy"
-                      decoding="async"
-                      class="w-full aspect-[9/16] object-cover rounded-xl border border-line shadow-sm bg-paper"
-                    />
+                <ul class="mt-6 space-y-3 max-w-prose">
+                  {p.impact.map((point) => (
+                    <li class="flex gap-3 text-[14px] md:text-[15px] text-muted leading-relaxed">
+                      <span class="mt-2 shrink-0 w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
+                      <span>{point}</span>
+                    </li>
                   ))}
+                </ul>
+
+                <div class="mt-7 flex flex-wrap gap-1.5">
+                  {p.tech.map((t) => (
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-paper border border-line text-[12px] text-muted font-medium">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="mt-8 md:mt-10 pt-8 md:pt-10 border-t border-line/70">
+                  <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-5 md:mb-6">
+                    Shipped Apps
+                  </p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {p.apps!.map((app) => (
+                      <div class="flex flex-col">
+                        <div class="aspect-[9/16] rounded-xl border border-line overflow-hidden bg-paper">
+                          <img
+                            src={app.screenshot}
+                            alt={`${app.name} preview`}
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-full object-cover"
+                          />
+                        </div>
+                        <h4 class="mt-4 font-display text-[18px] text-ink font-semibold tracking-tightish">
+                          {app.name}
+                        </h4>
+                        <p class="mt-1.5 text-[14px] text-muted leading-relaxed">
+                          {app.tagline}
+                        </p>
+                        <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+                          <a
+                            href={app.url}
+                            class="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          >
+                            {app.cta}
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M7 17L17 7M9 7h8v8" />
+                            </svg>
+                          </a>
+                          {app.note && (
+                            <span class="text-[12px] text-subtle">{app.note}</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
-              <div
-                class="aspect-[4/5] md:aspect-auto md:h-full min-h-[280px] rounded-lg border border-line bg-gradient-to-br from-paper to-line/30 flex items-center justify-center p-6 text-center"
-                aria-label={`${p.name} screenshot placeholder`}
-              >
-                <div>
-                  <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-3">
-                    Screenshot Coming
+              <div class="grid md:grid-cols-12 gap-6 md:gap-10">
+                <div class="md:col-span-7 flex flex-col">
+                  <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[12px] tracking-wide uppercase text-subtle font-medium">
+                    <span>{p.year}</span>
+                    <span class="text-line">&middot;</span>
+                    <span>{p.role}</span>
+                  </div>
+
+                  <h3 class="mt-3 font-display text-[26px] md:text-[32px] tracking-tightish text-ink font-semibold leading-tight">
+                    {p.name}
+                    <span class="text-muted font-normal"> &mdash; {p.subtitle}</span>
+                  </h3>
+
+                  <p class="mt-4 text-[16px] md:text-[17px] text-muted leading-relaxed max-w-prose">
+                    {p.tagline}
                   </p>
-                  <p class="font-display text-[18px] text-ink/60">
-                    /public/projects/{p.slug}/
-                  </p>
+
+                  <ul class="mt-6 space-y-3 max-w-prose">
+                    {p.impact.map((point) => (
+                      <li class="flex gap-3 text-[14px] md:text-[15px] text-muted leading-relaxed">
+                        <span class="mt-2 shrink-0 w-1 h-1 rounded-full bg-accent" aria-hidden="true"></span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="mt-7 flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-paper border border-line text-[12px] text-muted font-medium">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {p.apps && p.apps.length === 1 && (
+                    <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <a
+                        href={p.apps[0].url}
+                        class="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        {p.apps[0].cta}
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M7 17L17 7M9 7h8v8" />
+                        </svg>
+                      </a>
+                      <span class="text-[12px] text-subtle">{p.apps[0].name}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div class="md:col-span-5">
+                  {p.screenshots && p.screenshots.length > 0 ? (
+                    <div class="h-full flex items-center justify-center">
+                      <div class="grid grid-cols-3 gap-2.5 md:gap-3 w-full">
+                        {p.screenshots.slice(0, 3).map((src, i) => (
+                          <img
+                            src={src}
+                            alt={`${p.name} screenshot ${i + 1}`}
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full aspect-[9/16] object-cover rounded-xl border border-line shadow-sm bg-paper"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      class="aspect-[4/5] md:aspect-auto md:h-full min-h-[280px] rounded-lg border border-line bg-gradient-to-br from-paper to-line/30 flex items-center justify-center p-6 text-center"
+                      aria-label={`${p.name} screenshot placeholder`}
+                    >
+                      <div>
+                        <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-3">
+                          Screenshot Coming
+                        </p>
+                        <p class="font-display text-[18px] text-ink/60">
+                          /public/projects/{p.slug}/
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
-          </div>
-        </article>
-      ))}
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>

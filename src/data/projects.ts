@@ -1,6 +1,10 @@
 export interface AppLink {
+  name: string;
+  tagline: string;
   url: string;
-  label: string;
+  cta: string;
+  screenshot: string;
+  note?: string;
 }
 
 export interface Project {
@@ -18,27 +22,42 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'bussma',
-    name: 'Bussma',
-    subtitle: 'Saudi Real Estate Platform',
+    slug: 'sadan',
+    name: 'SADAN',
+    subtitle: 'Saudi PropTech Group',
     role: 'Senior iOS Engineer',
     year: '2023 — Present',
     tagline:
-      'Migrating a production real estate app from UIKit to SwiftUI while keeping millions of Arabic-speaking users live.',
+      'Leading iOS across three production apps for a Saudi PropTech group — auctions, property documentation, and commercial leasing — through an incremental UIKit → SwiftUI migration with zero downtime.',
     impact: [
-      'Architected an incremental UIKit → SwiftUI migration with zero downtime, starting from the auth and auctions modules.',
+      'Architected an incremental UIKit → SwiftUI migration across multiple production apps, starting from the auth and auctions modules.',
       'Built a real-time auction system using SignalR with JWT-scoped user groups, MapKit, and Arabic countdown timers.',
       'Reduced post-release bugs by 30% through structured code review and added unit and UI test coverage.',
     ],
     tech: ['Swift', 'SwiftUI', 'UIKit', 'Combine', 'SignalR', 'Alamofire', 'MapKit', 'Arabic / RTL', 'Interactor-Presenter-View'],
     apps: [
-      { url: 'https://apps.apple.com/eg/app/zayid-%D8%B2%D8%A7%D8%A6%D8%AF/id6480176033', label: 'Zayid · Auctions' },
-      { url: 'https://apps.apple.com/eg/app/damin-%D8%B6%D8%A7%D9%85%D9%86/id6523430369', label: 'Damin · Property Docs' },
-    ],
-    screenshots: [
-      '/projects/bussma/zayid-1.jpg',
-      '/projects/bussma/zayid-2.jpg',
-      '/projects/bussma/zayid-3.jpg',
+      {
+        name: 'Zayid',
+        tagline: 'Real-time real estate auctions for the Saudi market.',
+        url: 'https://apps.apple.com/eg/app/zayid-%D8%B2%D8%A7%D8%A6%D8%AF/id6480176033',
+        cta: 'View on App Store',
+        screenshot: '/projects/sadan/zayid-1.jpg',
+      },
+      {
+        name: 'Damin',
+        tagline: 'Residential and commercial property documentation, integrated with Ejar.',
+        url: 'https://apps.apple.com/eg/app/damin-%D8%B6%D8%A7%D9%85%D9%86/id6523430369',
+        cta: 'View on App Store',
+        screenshot: '/projects/sadan/damin-1.png',
+      },
+      {
+        name: 'RealTech',
+        tagline: 'AI-assisted platform for commercial real estate operations.',
+        url: 'https://therealtech.ai/',
+        cta: 'Visit Website',
+        screenshot: '/projects/sadan/realtech-preview.png',
+        note: 'iOS app in development',
+      },
     ],
   },
   {
@@ -56,7 +75,13 @@ export const projects: Project[] = [
     ],
     tech: ['Swift', 'Objective-C', 'UIKit', 'Encryption', 'Banking Compliance', 'Multi-region deployment'],
     apps: [
-      { url: 'https://apps.apple.com/ro/app/cec-bank-mobile-banking/id1071729654', label: 'CEC Bank · Romania' },
+      {
+        name: 'CEC Bank Mobile Banking',
+        tagline: 'Retail mobile banking for Romania’s CEC Bank — balances, payments, transfers.',
+        url: 'https://apps.apple.com/ro/app/cec-bank-mobile-banking/id1071729654',
+        cta: 'View on App Store',
+        screenshot: '/projects/asseco/cec-1.png',
+      },
     ],
     screenshots: [
       '/projects/asseco/cec-1.png',
@@ -93,7 +118,13 @@ export const projects: Project[] = [
     ],
     tech: ['Swift', 'UIKit', 'HealthKit', 'HIPAA', 'Jenkins', 'Bitrise', 'Fastlane', 'AVFoundation'],
     apps: [
-      { url: 'https://apps.apple.com/us/app/el-shefaa-%D8%A7%D9%84%D8%B4%D9%81%D8%A7%D8%A1/id1455729523', label: 'El Shefaa · Patient App' },
+      {
+        name: 'El Shefaa',
+        tagline: 'Patient app connecting users to nearby doctors, clinics, labs, and pharmacies.',
+        url: 'https://apps.apple.com/us/app/el-shefaa-%D8%A7%D9%84%D8%B4%D9%81%D8%A7%D8%A1/id1455729523',
+        cta: 'View on App Store',
+        screenshot: '/projects/medica/shefaa-1.jpg',
+      },
     ],
     screenshots: [
       '/projects/medica/shefaa-1.jpg',
