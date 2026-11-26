@@ -61,23 +61,25 @@ import { projects } from '../data/projects';
               ))}
             </div>
 
-            {p.appStoreUrl && (
-              <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1">
-                <a
-                  href={p.appStoreUrl}
-                  class="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  View on App Store
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M7 17L17 7M9 7h8v8" />
-                  </svg>
-                </a>
-                {p.appStoreLabel && (
-                  <span class="text-[12px] text-subtle">{p.appStoreLabel}</span>
-                )}
-              </div>
+            {p.apps && p.apps.length > 0 && (
+              <ul class="mt-6 flex flex-col gap-2">
+                {p.apps.map((app) => (
+                  <li class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <a
+                      href={app.url}
+                      class="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      View on App Store
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                    <span class="text-[12px] text-subtle">{app.label}</span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
 
