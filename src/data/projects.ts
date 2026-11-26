@@ -8,6 +8,7 @@ export interface Project {
   impact: string[];
   tech: string[];
   appStoreUrl?: string;
+  appStoreLabel?: string;
   screenshots?: string[];
 }
 
@@ -41,6 +42,13 @@ export const projects: Project[] = [
       'Owned the App Store submission process across multiple regional banking apps.',
     ],
     tech: ['Swift', 'Objective-C', 'UIKit', 'Encryption', 'Banking Compliance', 'Multi-region deployment'],
+    appStoreUrl: 'https://apps.apple.com/ro/app/cec-bank-mobile-banking/id1071729654',
+    appStoreLabel: 'CEC Bank · Romania',
+    screenshots: [
+      '/projects/asseco/cec-1.png',
+      '/projects/asseco/cec-2.png',
+      '/projects/asseco/cec-3.png',
+    ],
   },
   {
     slug: 'maqraa',

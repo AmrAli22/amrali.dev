@@ -62,34 +62,55 @@ import { projects } from '../data/projects';
             </div>
 
             {p.appStoreUrl && (
-              <a
-                href={p.appStoreUrl}
-                class="mt-6 inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                View on App Store
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7 17L17 7M9 7h8v8" />
-                </svg>
-              </a>
+              <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1">
+                <a
+                  href={p.appStoreUrl}
+                  class="inline-flex items-center gap-1.5 text-[13px] text-accent font-medium hover:underline"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  View on App Store
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </a>
+                {p.appStoreLabel && (
+                  <span class="text-[12px] text-subtle">{p.appStoreLabel}</span>
+                )}
+              </div>
             )}
           </div>
 
           <div class="md:col-span-5">
-            <div
-              class="aspect-[4/5] md:aspect-auto md:h-full min-h-[280px] rounded-lg border border-line bg-gradient-to-br from-paper to-line/30 flex items-center justify-center p-6 text-center"
-              aria-label={`${p.name} screenshot placeholder`}
-            >
-              <div>
-                <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-3">
-                  Screenshot Coming
-                </p>
-                <p class="font-display text-[18px] text-ink/60">
-                  /public/projects/{p.slug}/
-                </p>
+            {p.screenshots && p.screenshots.length > 0 ? (
+              <div class="h-full flex items-center justify-center">
+                <div class="grid grid-cols-3 gap-2.5 md:gap-3 w-full">
+                  {p.screenshots.slice(0, 3).map((src, i) => (
+                    <img
+                      src={src}
+                      alt={`${p.name} screenshot ${i + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full aspect-[9/16] object-cover rounded-xl border border-line shadow-sm bg-paper"
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div
+                class="aspect-[4/5] md:aspect-auto md:h-full min-h-[280px] rounded-lg border border-line bg-gradient-to-br from-paper to-line/30 flex items-center justify-center p-6 text-center"
+                aria-label={`${p.name} screenshot placeholder`}
+              >
+                <div>
+                  <p class="text-[11px] tracking-[0.22em] uppercase text-subtle font-medium mb-3">
+                    Screenshot Coming
+                  </p>
+                  <p class="font-display text-[18px] text-ink/60">
+                    /public/projects/{p.slug}/
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </article>
       ))}
