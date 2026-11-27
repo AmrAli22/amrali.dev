@@ -3,7 +3,7 @@ export interface AppLink {
   tagline: string;
   url: string;
   cta: string;
-  screenshot: string;
+  screenshots: string[];
   note?: string;
 }
 
@@ -17,7 +17,6 @@ export interface Project {
   impact: string[];
   tech: string[];
   apps?: AppLink[];
-  screenshots?: string[];
 }
 
 export const projects: Project[] = [
@@ -41,21 +40,35 @@ export const projects: Project[] = [
         tagline: 'Real-time real estate auctions for the Saudi market.',
         url: 'https://apps.apple.com/eg/app/zayid-%D8%B2%D8%A7%D8%A6%D8%AF/id6480176033',
         cta: 'View on App Store',
-        screenshot: '/projects/sadan/zayid-1.jpg',
+        screenshots: [
+          '/projects/sadan/zayid-1.jpg',
+          '/projects/sadan/zayid-2.jpg',
+          '/projects/sadan/zayid-3.jpg',
+          '/projects/sadan/zayid-4.jpg',
+          '/projects/sadan/zayid-5.jpg',
+          '/projects/sadan/zayid-6.jpg',
+        ],
       },
       {
         name: 'Damin',
         tagline: 'Residential and commercial property documentation, integrated with Ejar.',
         url: 'https://apps.apple.com/eg/app/damin-%D8%B6%D8%A7%D9%85%D9%86/id6523430369',
         cta: 'View on App Store',
-        screenshot: '/projects/sadan/damin-1.png',
+        screenshots: [
+          '/projects/sadan/damin-1.png',
+          '/projects/sadan/damin-2.png',
+          '/projects/sadan/damin-3.jpg',
+          '/projects/sadan/damin-4.png',
+        ],
       },
       {
         name: 'RealTech',
         tagline: 'AI-assisted platform for commercial real estate operations.',
         url: 'https://therealtech.ai/',
         cta: 'Visit Website',
-        screenshot: '/projects/sadan/realtech-preview.png',
+        screenshots: [
+          '/projects/sadan/realtech-preview.png',
+        ],
         note: 'iOS app in development',
       },
     ],
@@ -80,13 +93,17 @@ export const projects: Project[] = [
         tagline: 'Retail mobile banking for Romania’s CEC Bank — balances, payments, transfers.',
         url: 'https://apps.apple.com/ro/app/cec-bank-mobile-banking/id1071729654',
         cta: 'View on App Store',
-        screenshot: '/projects/asseco/cec-1.png',
+        screenshots: [
+          '/projects/asseco/cec-1.png',
+          '/projects/asseco/cec-2.png',
+          '/projects/asseco/cec-3.png',
+          '/projects/asseco/cec-4.png',
+          '/projects/asseco/cec-5.png',
+          '/projects/asseco/cec-6.png',
+          '/projects/asseco/cec-7.png',
+          '/projects/asseco/cec-8.png',
+        ],
       },
-    ],
-    screenshots: [
-      '/projects/asseco/cec-1.png',
-      '/projects/asseco/cec-2.png',
-      '/projects/asseco/cec-3.png',
     ],
   },
   {
@@ -109,13 +126,16 @@ export const projects: Project[] = [
         tagline: 'Learning marketplace for university students — curricula, quizzes, and PDF study materials.',
         url: 'https://apps.apple.com/sa/app/aljoud/id1604452873',
         cta: 'View on App Store',
-        screenshot: '/projects/aljoud/aljoud-1.png',
+        screenshots: [
+          '/projects/aljoud/aljoud-1.png',
+          '/projects/aljoud/aljoud-2.png',
+          '/projects/aljoud/aljoud-3.png',
+          '/projects/aljoud/aljoud-4.png',
+          '/projects/aljoud/aljoud-5.png',
+          '/projects/aljoud/aljoud-6.png',
+          '/projects/aljoud/aljoud-7.png',
+        ],
       },
-    ],
-    screenshots: [
-      '/projects/aljoud/aljoud-1.png',
-      '/projects/aljoud/aljoud-2.png',
-      '/projects/aljoud/aljoud-3.png',
     ],
   },
   {
@@ -137,13 +157,12 @@ export const projects: Project[] = [
         tagline: 'Patient app connecting users to nearby doctors, clinics, labs, and pharmacies.',
         url: 'https://apps.apple.com/us/app/el-shefaa-%D8%A7%D9%84%D8%B4%D9%81%D8%A7%D8%A1/id1455729523',
         cta: 'View on App Store',
-        screenshot: '/projects/medica/shefaa-1.jpg',
+        screenshots: [
+          '/projects/medica/shefaa-1.jpg',
+          '/projects/medica/shefaa-2.jpg',
+          '/projects/medica/shefaa-3.jpg',
+        ],
       },
-    ],
-    screenshots: [
-      '/projects/medica/shefaa-1.jpg',
-      '/projects/medica/shefaa-2.jpg',
-      '/projects/medica/shefaa-3.jpg',
     ],
   },
 ];

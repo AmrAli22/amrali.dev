@@ -1,0 +1,102 @@
+---
+export interface Props {
+  images: string[];
+  name: string;
+}
+
+const { images, name } = Astro.props;
+const showControls = images.length > 1;
+---
+
+<div class="relative group/carousel" data-carousel>
+  <div
+    class="flex gap-3 md:gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-1 -mx-1 px-1"
+    data-carousel-track
+    style="scrollbar-width: none;"
+  >
+    {images.map((src, i) => (
+      <div class="snap-start shrink-0 h-[240px] md:h-[300px]">
+        <img
+          src={src}
+          alt={`${name} screenshot ${i + 1}`}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          draggable="false"
+          class="h-full w-auto object-cover rounded-xl border border-line shadow-sm bg-paper select-none"
+        />
+      </div>
+    ))}
+  </div>
+
+  {showControls && (
+    <>
+      <button
+        type="button"
+        data-carousel-prev
+        aria-label={`Previous ${name} screenshot`}
+        class="hidden md:flex absolute left-1 top-[calc(50%-14px)] -translate-y-1/2 w-9 h-9 rounded-full bg-ink/75 hover:bg-ink text-paper items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity disabled:opacity-0 disabled:pointer-events-none focus-visible:opacity-100"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button
+        type="button"
+        data-carousel-next
+        aria-label={`Next ${name} screenshot`}
+        class="hidden md:flex absolute right-1 top-[calc(50%-14px)] -translate-y-1/2 w-9 h-9 rounded-full bg-ink/75 hover:bg-ink text-paper items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity disabled:opacity-0 disabled:pointer-events-none focus-visible:opacity-100"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="mt-3 flex items-center justify-center gap-2 text-[11px] tracking-wide text-subtle font-medium">
+        <span data-carousel-current>1</span>
+        <span class="text-line">/</span>
+        <span>{images.length}</span>
+      </div>
+    </>
+  )}
+</div>
+
+<style>
+  [data-carousel-track]::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((car) => {
+    const track = car.querySelector<HTMLElement>('[data-carousel-track]');
+    const prev = car.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const next = car.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    const current = car.querySelector<HTMLElement>('[data-carousel-current]');
+    if (!track) return;
+
+    const slide = track.firstElementChild as HTMLElement | null;
+
+    const step = () => {
+      if (!slide) return track.clientWidth;
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      return slide.getBoundingClientRect().width + gap;
+    };
+
+    prev?.addEventListener('click', () => {
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+    next?.addEventListener('click', () => {
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+
+    const updateControls = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max - 2;
+      if (current) {
+        const i = Math.round(track.scrollLeft / step());
+        current.textContent = String(i + 1);
+      }
+    };
+
+    track.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
+  });
+</script>
